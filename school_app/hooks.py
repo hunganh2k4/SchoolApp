@@ -5,6 +5,10 @@ app_description = "app for school"
 app_email = "phanhunganh2004@gmail.com"
 app_license = "mit"
 
+patches = [
+	"school_app.patches.v1.seed_student"
+]
+
 # Apps
 # ------------------
 
@@ -26,7 +30,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/school_app/css/school_app.css"
-# app_include_js = "/assets/school_app/js/school_app.js"
+app_include_js = "/assets/school_app/js/student_dashboard.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/school_app/css/school_app.css"
@@ -255,4 +259,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

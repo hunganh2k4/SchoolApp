@@ -1,0 +1,47 @@
+{
+  "doctype": "DocType",
+  "name": "Student",
+  "module": "School App",
+  "custom": 1,
+  "autoname": "field:student_name",
+  "fields": [
+    {
+      "fieldname": "student_name",
+      "label": "Student Name",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "student_email",
+      "label": "Student Email",
+      "fieldtype": "Data",
+      "reqd": 1
+    }
+  ],
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Desk User",
+      "share": 1,
+      "write": 1
+    }
+  ]
+}
