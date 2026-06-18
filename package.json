@@ -1,0 +1,26 @@
+{
+  "name": "school_app",
+  "version": "1.0.0",
+  "description": "app for school",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hunganh2k4/SchoolApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hunganh2k4/SchoolApp/issues"
+  },
+  "homepage": "https://github.com/hunganh2k4/SchoolApp#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "@types/node": "^25.9.3"
+  }
+}
