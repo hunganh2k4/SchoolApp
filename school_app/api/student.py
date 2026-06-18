@@ -45,8 +45,12 @@ def update_student(name, student_name=None, student_email=None):
         
     student = frappe.get_doc("Student", name)
     
-    if student_name:
-        student.student_name = student_name
+    # If student_name changes, we must rename the document since autoname is field:student_name
+    if student_name and student.student_name != student_name:
+        frappe.rename_doc("Student", name, student_name, force=True)
+        # reload the doc with the new name
+        student = frappe.get_doc("Student", student_name)
+        
     if student_email:
         student.student_email = student_email
         
