@@ -70,3 +70,24 @@ class TestStudentAPI(unittest.TestCase):
         emails = [s.get("student_email") for s in students]
         self.assertIn("test_4@example.com", emails)
         self.assertIn("test_5@example.com", emails)
+        
+    def test_get_student_not_found(self):
+        from school_app.api.student import get_student
+        with self.assertRaises(frappe.DoesNotExistError):
+            get_student("Non_Existent_Student_123")
+            
+    def test_create_student_missing_fields(self):
+        from school_app.api.student import create_student
+        with self.assertRaises(frappe.exceptions.ValidationError):
+            # student_name is required
+            create_student(None, "missing_name@example.com")
+            
+    def test_update_student_not_found(self):
+        from school_app.api.student import update_student
+        with self.assertRaises(frappe.DoesNotExistError):
+            update_student("Non_Existent_Student_123", student_name="New Name")
+            
+    def test_delete_student_not_found(self):
+        from school_app.api.student import delete_student
+        with self.assertRaises(frappe.DoesNotExistError):
+            delete_student("Non_Existent_Student_123")
