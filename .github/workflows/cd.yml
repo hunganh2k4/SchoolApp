@@ -1,0 +1,39 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Yêu cầu admin approval qua Github Environments
+    environment: production
+    
+    steps:
+      - name: Deploy to Azure VPS
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /path/to/your/frappe_docker_deployment/school_app
+            
+            # Kéo code mới nhất từ nhánh main
+            git pull origin main
+            
+            # Build lại Docker image cho app mới
+            docker compose build
+            
+            # Khởi động lại các container
+            docker compose up -d
+            
+            # Chạy lệnh update database (migrate)
+            docker compose exec backend bench --site school.localhost migrate
+            
+            # Xoá cache
+            docker compose exec backend bench --site school.localhost clear-cache
+            
+            echo "Deployment completed successfully!"
